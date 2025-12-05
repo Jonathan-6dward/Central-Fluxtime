@@ -1,449 +1,392 @@
 import React, { useState } from 'react';
 import { 
-  ShoppingBag, TrendingUp, BarChart2, FileText, Video, Tag, Target, 
-  Zap, AlertCircle, CheckCircle2, Package, Search, ArrowRight,
-  Copy, RefreshCw, Layers, DollarSign, Globe, Megaphone, Smartphone
+  Copy, Zap, BarChart2, Video, Globe, UploadCloud, 
+  Search, Shield, Layers, ArrowRight, Play, CheckCircle2, 
+  Terminal, Cpu, AlertTriangle, TrendingUp, ShoppingBag, 
+  Smartphone, Share2, Package, Eye, ChevronDown, ChevronUp, 
+  Download, Wand2, Rocket, Lock
 } from 'lucide-react';
 import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts';
+import api from '../services/api'; // Integrated API service
 
-// Mock Data for the Catalog
-const products = [
-  { 
-    id: 1, 
-    name: "Galaxy Projector 2.0", 
-    price: "$34.99", 
-    image: "https://source.unsplash.com/random/300x300?galaxy&sig=1",
-    status: "Viral", 
-    score: 98,
-    origin: "TikTok",
-    trend: "Exploding",
-    saturation: "Medium"
-  },
-  { 
-    id: 2, 
-    name: "Ergonomic Neck Cloud", 
-    price: "$29.95", 
-    image: "https://source.unsplash.com/random/300x300?health&sig=2",
-    status: "Stable", 
-    score: 85,
-    origin: "Facebook",
-    trend: "Steady",
-    saturation: "High"
-  },
-  { 
-    id: 3, 
-    name: "Smart Plant Sensor", 
-    price: "$19.00", 
-    image: "https://source.unsplash.com/random/300x300?plant&sig=3",
-    status: "Rising", 
-    score: 92,
-    origin: "Instagram",
-    trend: "Growth",
-    saturation: "Low"
-  },
-  { 
-    id: 4, 
-    name: "Portable Blender X", 
-    price: "$45.00", 
-    image: "https://source.unsplash.com/random/300x300?blender&sig=4",
-    status: "Falling", 
-    score: 60,
-    origin: "Youtube",
-    trend: "Decline",
-    saturation: "Oversaturated"
-  }
-];
+const FluxProduct = () => {
+  const [url, setUrl] = useState('');
+  const [isCloning, setIsCloning] = useState(false);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [cloneStatus, setCloneStatus] = useState<string>('Aguardando URL...');
 
-// Mock Data for Lifecycle Chart
-const lifecycleData = [
-  { name: 'W1', value: 20 },
-  { name: 'W2', value: 45 },
-  { name: 'W3', value: 75 },
-  { name: 'W4', value: 95 },
-  { name: 'W5', value: 100 },
-  { name: 'W6', value: 85 },
-  { name: 'W7', value: 90 },
-];
+  const handleClone = async () => {
+    if (!url) return;
+    setIsCloning(true);
+    setCloneStatus('Iniciando conexão segura...');
+    
+    // Simulate complex cloning process steps
+    setTimeout(() => setCloneStatus('Extraindo metadados do concorrente...'), 800);
+    setTimeout(() => setCloneStatus('Baixando imagens em Alta Resolução...'), 1800);
+    setTimeout(() => setCloneStatus('Reescrevendo copy com IA Persuasiva...'), 2800);
+    
+    // In a real scenario, this would call the backend:
+    // await api.post('/api/ecommerce/clone', { url });
+    
+    setTimeout(() => {
+        setIsCloning(false);
+        setCloneStatus('Produto Clonado com Sucesso!');
+    }, 4000);
+  };
 
-const EcommerceBoost = () => {
-  const [selectedProduct, setSelectedProduct] = useState<any>(products[0]);
-  const [activeTab, setActiveTab] = useState<'analysis' | 'sales' | 'content'>('analysis');
+  const trendData = [
+    { name: 'D1', value: 20 }, { name: 'D2', value: 45 }, { name: 'D3', value: 30 },
+    { name: 'D4', value: 80 }, { name: 'D5', value: 100 }, { name: 'D6', value: 90 },
+    { name: 'D7', value: 110 },
+  ];
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 pb-10 font-sans">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-white/10 pb-6">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-             <div className="w-8 h-8 rounded bg-yellow-400/20 flex items-center justify-center text-yellow-400">
-                <ShoppingBag size={18} />
-             </div>
-             <span className="text-xs font-bold text-yellow-400 tracking-widest uppercase">FluxProductPulse</span>
-          </div>
-          <h1 className="text-4xl font-black text-white tracking-tight font-display">Product Intelligence</h1>
-          <p className="text-gray-400 mt-2">Hub de inteligência de produtos e otimização de conversão.</p>
-        </div>
-        <div className="flex gap-4">
-           <button className="px-4 py-2 bg-[#111815] border border-white/10 rounded-xl text-white text-sm font-bold flex items-center gap-2 hover:border-yellow-400 transition-colors">
-              <Search size={16} className="text-yellow-400"/> New Product Scan
-           </button>
-        </div>
-      </div>
+    <div className="max-w-7xl mx-auto pb-20 font-sans text-gray-200">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative py-20 text-center overflow-hidden">
+         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-neon-blue/10 blur-[120px] rounded-full pointer-events-none"></div>
+         
+         <div className="relative z-10 space-y-6 max-w-5xl mx-auto px-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-blue/10 border border-neon-blue/20 text-neon-blue text-xs font-bold uppercase tracking-widest mb-4 animate-fade-in-up">
+               <Cpu size={14} /> FluxProduct Engine 2025
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-black text-white leading-tight tracking-tight font-display animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+               Transforme Qualquer Produto em uma <span className="text-neon-blue text-glow">Máquina de Vendas</span>.
+            </h1>
+            
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+               O <span className="text-white font-bold">FluxProduct</span> clona produtos virais, analisa concorrentes, gera anúncios completos e publica direto na sua loja — tudo automaticamente em segundos.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+               <button onClick={() => document.getElementById('clone-section')?.scrollIntoView({ behavior: 'smooth' })} className="px-8 py-4 bg-neon-blue text-black text-lg font-bold rounded-xl hover:shadow-[0_0_40px_rgba(76,201,240,0.4)] transition-all flex items-center gap-2 justify-center group">
+                  <Zap size={20} fill="currentColor" className="group-hover:scale-110 transition-transform" /> Clonar Produto Agora
+               </button>
+               <button className="px-8 py-4 bg-white/5 border border-white/10 text-white text-lg font-bold rounded-xl hover:bg-white/10 transition-colors backdrop-blur-sm flex items-center gap-2 justify-center">
+                  <Play size={20} /> Ver Demonstração
+               </button>
+            </div>
+         </div>
 
-      {/* KPI Cards (Product Focused) */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        {[
-          { label: 'Produtos Monitorados', val: '142', icon: Package, color: 'text-blue-400' },
-          { label: 'Oportunidades Virais', val: '12', icon: Zap, color: 'text-yellow-400' },
-          { label: 'Nível de Saturação', val: 'Médio', icon: AlertCircle, color: 'text-orange-400' },
-          { label: 'Margem Média', val: '65%', icon: DollarSign, color: 'text-green-400' },
-        ].map((stat, i) => (
-          <div key={i} className="glassmorphism p-4 rounded-xl flex items-center gap-4 border border-white/10 bg-[#111]">
-             <div className={`p-3 rounded-lg bg-white/5 ${stat.color}`}>
-               <stat.icon size={20} />
-             </div>
-             <div>
-               <p className="text-xs text-gray-400 font-bold uppercase">{stat.label}</p>
-               <p className="text-xl font-black text-white">{stat.val}</p>
-             </div>
-          </div>
-        ))}
-      </div>
+         {/* Hero Mockup */}
+         <div className="mt-16 relative max-w-5xl mx-auto px-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <div className="glassmorphism rounded-2xl border border-white/10 overflow-hidden shadow-2xl bg-[#0A0A0A]">
+               <div className="flex items-center gap-2 p-4 border-b border-white/10 bg-[#111]">
+                  <div className="flex gap-1.5">
+                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  </div>
+                  <div className="mx-auto bg-black/50 px-4 py-1 rounded-md text-xs text-gray-500 font-mono flex items-center gap-2">
+                     <Shield size={10} className="text-green-500"/> flux-product-cloner.exe
+                  </div>
+               </div>
+               <div className="p-8 bg-[#0D0F15] flex flex-col md:flex-row gap-8 items-center justify-center min-h-[300px]">
+                  {/* Left: Input */}
+                  <div className="flex-1 w-full space-y-4">
+                     <div className="bg-black/40 border border-white/10 rounded-xl p-4 flex gap-3 items-center">
+                        <ShoppingBag className="text-gray-500" />
+                        <input type="text" placeholder="Cole a URL (Shopee, AliExpress, Shopify...)" className="bg-transparent border-none outline-none text-white w-full placeholder:text-gray-600 font-mono text-sm" disabled />
+                     </div>
+                     <div className="flex gap-2">
+                        <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                           <div className="h-full bg-neon-blue w-[70%] animate-pulse"></div>
+                        </div>
+                     </div>
+                     <div className="text-xs font-mono text-neon-blue text-left space-y-1">
+                        <p>> Conectando ao SINT Trends... OK</p>
+                        <p>> Baixando 12 imagens em Alta Resolução... OK</p>
+                        <p>> Analisando 450 reviews... OK</p>
+                        <p className="animate-pulse">> Gerando Landing Page de Alta Conversão...</p>
+                     </div>
+                  </div>
+                  {/* Right: Result */}
+                  <div className="flex-1 w-full bg-white/5 rounded-xl border border-white/10 p-4 relative group cursor-pointer hover:border-neon-blue/50 transition-all">
+                     <div className="absolute top-2 right-2 bg-green-500 text-black text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1"><CheckCircle2 size={10}/> CONCLUÍDO</div>
+                     <div className="flex gap-4">
+                        <div className="w-20 h-20 bg-gray-700 rounded-lg animate-pulse"></div>
+                        <div className="space-y-2 flex-1">
+                           <div className="h-4 w-3/4 bg-white/20 rounded"></div>
+                           <div className="h-3 w-1/2 bg-white/10 rounded"></div>
+                           <div className="flex gap-2 mt-2">
+                              <div className="h-6 w-16 bg-neon-blue/20 rounded border border-neon-blue/30"></div>
+                              <div className="h-6 w-16 bg-white/10 rounded"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        
-        {/* Left: Product Catalog */}
-        <div className="lg:col-span-1 space-y-6">
-           <div className="flex items-center justify-between">
-              <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                 <Layers size={20} className="text-yellow-400"/> Catálogo
-              </h2>
-              <button className="text-xs text-yellow-400 font-bold hover:underline">Ver Todos</button>
-           </div>
+      {/* 2. HOW IT WORKS */}
+      <section className="py-20 px-4">
+         <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-white text-center mb-16 font-display">Como Funciona o <span className="text-neon-blue">Fluxo de Clonagem</span></h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               {[
+                  { icon: Copy, title: "1. Cole a URL", desc: "Suporta Shopee, TikTok Shop, Shopify, WooCommerce, Amazon e Mercado Livre." },
+                  { icon: Cpu, title: "2. IA Extrai Tudo", desc: "Fotos, vídeos, títulos, descrições, reviews, hashtags e metadados ocultos." },
+                  { icon: Rocket, title: "3. Gere em 1 Clique", desc: "Criativos, scripts, landing pages e exportação direta para sua loja." }
+               ].map((step, i) => (
+                  <div key={i} className="glassmorphism p-8 rounded-2xl bg-[#111] border border-white/10 relative group hover:border-neon-blue/30 transition-all">
+                     <div className="absolute -top-6 left-8 w-12 h-12 bg-[#0A0A0A] border border-white/10 rounded-xl flex items-center justify-center text-neon-blue shadow-neon-blue">
+                        <step.icon size={24} />
+                     </div>
+                     <h3 className="text-xl font-bold text-white mt-4 mb-2">{step.title}</h3>
+                     <p className="text-gray-400 leading-relaxed">{step.desc}</p>
+                  </div>
+               ))}
+            </div>
+         </div>
+      </section>
 
-           <div className="space-y-3">
-              {products.map((product) => (
-                 <div 
-                    key={product.id} 
-                    onClick={() => setSelectedProduct(product)}
-                    className={`p-3 rounded-xl border cursor-pointer transition-all flex items-center gap-4 group ${
-                       selectedProduct.id === product.id 
-                       ? 'bg-yellow-400/10 border-yellow-400/50' 
-                       : 'bg-[#111] border-white/5 hover:bg-white/10'
-                    }`}
-                 >
-                    <div className="w-16 h-16 rounded-lg bg-gray-700 overflow-hidden shrink-0">
-                       <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                       <div className="flex justify-between items-start mb-1">
-                          <h3 className="text-sm font-bold text-white truncate">{product.name}</h3>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold uppercase ${
-                             product.status === 'Viral' ? 'bg-green-500/20 text-green-400' :
-                             product.status === 'Falling' ? 'bg-red-500/20 text-red-400' :
-                             'bg-blue-500/20 text-blue-400'
-                          }`}>
-                             {product.status}
-                          </span>
-                       </div>
-                       <p className="text-xs text-gray-400">Score: <span className="text-white font-bold">{product.score}</span> • {product.price}</p>
-                       <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
-                          <Globe size={10}/> Origem: {product.origin}
-                       </p>
-                    </div>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                       <ArrowRight size={16} className="text-yellow-400"/>
-                    </div>
-                 </div>
-              ))}
-           </div>
-        </div>
+      {/* 3. CORE FUNCTIONALITIES */}
+      <section className="py-20 px-4 bg-[#0D0F15] border-y border-white/5">
+         <div className="max-w-7xl mx-auto">
+            <div className="mb-12 text-center md:text-left">
+               <h2 className="text-3xl font-bold text-white font-display">Funcionalidades <span className="text-neon-blue">Premium</span></h2>
+               <p className="text-gray-400 mt-2">O arsenal completo para dropshippers e marcas digitais.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+               <FeatureCard 
+                  icon={Copy} color="text-neon-blue" 
+                  title="Clonagem Completa" 
+                  items={["Título SEO & Descrição", "Download Imagens/Vídeos (Limpos)", "Variações de Preço", "Avaliações Reescritas"]}
+               />
+               <FeatureCard 
+                  icon={BarChart2} color="text-yellow-400" 
+                  title="Análise de Concorrentes PRO" 
+                  items={["Saturação Real & Curva de Vendas", "Previsões SINT Trends", "Ranking de Anúncios", "Gatilhos Emocionais"]}
+               />
+               <FeatureCard 
+                  icon={Video} color="text-pink-500" 
+                  title="Criador de Anúncios Auto" 
+                  items={["10 Ganchos Virais", "5 Scripts UGC", "Geração de Vídeo (Reactor)", "Thumbnails Automáticas"]}
+               />
+               <FeatureCard 
+                  icon={Eye} color="text-emerald-400" 
+                  title="Real Spy & Library" 
+                  items={["TikTok Ads Library", "Meta Ads Spy", "Histórico de Preços", "Ranking de Vendedores"]}
+               />
+               <FeatureCard 
+                  icon={UploadCloud} color="text-purple-400" 
+                  title="Exportação Instantânea" 
+                  items={["Shopify & WooCommerce", "Shopee & Mercado Livre", "Loja Integrada", "CSV Universal"]}
+               />
+               <FeatureCard 
+                  icon={Zap} color="text-orange-400" 
+                  title="Automations IA (n8n)" 
+                  items={["Postagem Automática", "Ajuste Dinâmico de Preço", "Monitoramento de Estoque", "Alerta de Novos Concorrentes"]}
+               />
+            </div>
+         </div>
+      </section>
 
-        {/* Right: Intelligence Hub (Deep Analysis) */}
-        <div className="lg:col-span-2 glassmorphism rounded-2xl border border-white/10 overflow-hidden bg-[#111815]">
-           {/* Product Header */}
-           <div className="p-6 border-b border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-black/20">
-              <div className="flex items-center gap-4">
-                 <div className="w-16 h-16 rounded-xl bg-gray-700 overflow-hidden border border-white/10">
-                    <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full object-cover" />
-                 </div>
-                 <div>
-                    <h2 className="text-2xl font-black text-white font-display">{selectedProduct.name}</h2>
-                    <p className="text-sm text-gray-400 flex items-center gap-2">
-                       <span className="bg-white/10 px-2 py-0.5 rounded text-white font-mono">{selectedProduct.price}</span>
-                       <span className="text-gray-500">|</span>
-                       <span className="text-yellow-400 font-bold flex items-center gap-1"><Zap size={12}/> Trend Score: {selectedProduct.score}/100</span>
-                    </p>
-                 </div>
-              </div>
-              <div className="flex gap-2">
-                 <button className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs font-bold text-white hover:bg-white/10 transition-colors">
-                    Ver no AliExpress
-                 </button>
-                 <button className="px-4 py-2 bg-yellow-400 text-black border border-yellow-400 rounded-lg text-xs font-bold hover:bg-yellow-300 transition-colors flex items-center gap-2">
-                    <Package size={14}/> Importar Loja
-                 </button>
-              </div>
-           </div>
+      {/* 4. CLONE MODE ACTION AREA */}
+      <section id="clone-section" className="py-20 px-4">
+         <div className="max-w-7xl mx-auto space-y-8">
+            <div className="glassmorphism p-8 rounded-2xl border border-neon-blue/30 bg-[#111] relative overflow-hidden">
+               <div className="relative z-10 flex flex-col md:flex-row gap-6 items-end">
+                  <div className="flex-1 w-full space-y-4">
+                     <h3 className="text-2xl font-bold text-white flex items-center gap-2">
+                        <Zap className="text-neon-blue" /> Clonar Produto
+                     </h3>
+                     <p className="text-gray-400">Cole a URL abaixo para iniciar a extração completa.</p>
+                     <div className="flex gap-4">
+                        <input 
+                           type="text" 
+                           value={url}
+                           onChange={(e) => setUrl(e.target.value)}
+                           placeholder="https://shopee.com.br/produto..." 
+                           className="flex-1 h-14 bg-black/40 border border-white/20 rounded-xl pl-5 text-white focus:border-neon-blue outline-none transition-all text-lg"
+                        />
+                        <button 
+                           onClick={handleClone}
+                           disabled={isCloning}
+                           className="h-14 px-8 bg-neon-blue text-black font-bold rounded-xl hover:shadow-[0_0_20px_rgba(76,201,240,0.4)] transition-all flex items-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                           {isCloning ? 'Processando...' : 'Iniciar Extração'}
+                        </button>
+                     </div>
+                     {isCloning && (
+                        <p className="text-neon-blue text-sm font-mono animate-pulse mt-2 flex items-center gap-2">
+                           <Terminal size={14}/> {cloneStatus}
+                        </p>
+                     )}
+                  </div>
+               </div>
+               {/* Background Glow */}
+               <div className="absolute top-0 right-0 w-64 h-64 bg-neon-blue/5 blur-[80px] rounded-full pointer-events-none"></div>
+            </div>
 
-           {/* Tabs */}
-           <div className="flex border-b border-white/10 bg-white/5">
-              <button 
-                 onClick={() => setActiveTab('analysis')}
-                 className={`flex-1 py-4 text-sm font-bold text-center border-b-2 transition-colors flex items-center justify-center gap-2 ${
-                    activeTab === 'analysis' ? 'border-yellow-400 text-yellow-400 bg-yellow-400/5' : 'border-transparent text-gray-400 hover:text-white'
-                 }`}
-              >
-                 <BarChart2 size={16}/> Deep Analysis
-              </button>
-              <button 
-                 onClick={() => setActiveTab('sales')}
-                 className={`flex-1 py-4 text-sm font-bold text-center border-b-2 transition-colors flex items-center justify-center gap-2 ${
-                    activeTab === 'sales' ? 'border-yellow-400 text-yellow-400 bg-yellow-400/5' : 'border-transparent text-gray-400 hover:text-white'
-                 }`}
-              >
-                 <FileText size={16}/> Sales Kit Generator
-              </button>
-              <button 
-                 onClick={() => setActiveTab('content')}
-                 className={`flex-1 py-4 text-sm font-bold text-center border-b-2 transition-colors flex items-center justify-center gap-2 ${
-                    activeTab === 'content' ? 'border-yellow-400 text-yellow-400 bg-yellow-400/5' : 'border-transparent text-gray-400 hover:text-white'
-                 }`}
-              >
-                 <Megaphone size={16}/> Content Strategy
-              </button>
-           </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <button className="h-40 glassmorphism rounded-2xl border border-white/10 hover:border-pink-500/50 hover:bg-pink-500/5 transition-all flex flex-col items-center justify-center gap-3 group">
+                  <Video size={32} className="text-gray-500 group-hover:text-pink-500 transition-colors" />
+                  <div className="text-center">
+                     <span className="text-xl font-bold text-white block">Criar Anúncios</span>
+                     <span className="text-sm text-gray-500 group-hover:text-gray-300">Scripts + Vídeos + Thumbs (Reactor)</span>
+                  </div>
+               </button>
+               <button className="h-40 glassmorphism rounded-2xl border border-white/10 hover:border-yellow-400/50 hover:bg-yellow-400/5 transition-all flex flex-col items-center justify-center gap-3 group">
+                  <BarChart2 size={32} className="text-gray-500 group-hover:text-yellow-400 transition-colors" />
+                  <div className="text-center">
+                     <span className="text-xl font-bold text-white block">Analisar Concorrentes</span>
+                     <span className="text-sm text-gray-500 group-hover:text-gray-300">Saturação + Previsões SINT</span>
+                  </div>
+               </button>
+            </div>
+         </div>
+      </section>
 
-           {/* Content Area */}
-           <div className="p-6 min-h-[400px]">
-              
-              {/* TAB 1: Deep Analysis */}
-              {activeTab === 'analysis' && (
-                 <div className="space-y-8 animate-fade-in-up">
-                    
-                    {/* Charts & Metrics Row */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                       <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                          <h3 className="text-sm font-bold text-gray-400 uppercase mb-4 flex items-center gap-2">
-                             <TrendingUp size={16} className="text-yellow-400"/> Ciclo de Vida da Trend
-                          </h3>
-                          <div className="h-40 w-full">
-                             <ResponsiveContainer width="100%" height="100%">
-                                <AreaChart data={lifecycleData}>
-                                   <defs>
-                                      <linearGradient id="colorCycle" x1="0" y1="0" x2="0" y2="1">
-                                         <stop offset="5%" stopColor="#fbbf24" stopOpacity={0.3}/>
-                                         <stop offset="95%" stopColor="#fbbf24" stopOpacity={0}/>
-                                      </linearGradient>
-                                   </defs>
-                                   <Tooltip contentStyle={{backgroundColor: '#111815', border: '1px solid #333', borderRadius: '8px'}} />
-                                   <Area type="monotone" dataKey="value" stroke="#fbbf24" strokeWidth={2} fill="url(#colorCycle)" />
-                                </AreaChart>
-                             </ResponsiveContainer>
-                          </div>
-                          <div className="mt-2 text-center">
-                             <span className="text-xs text-white bg-green-500/20 px-2 py-1 rounded border border-green-500/30">Fase Atual: Crescimento Exponencial</span>
-                          </div>
-                       </div>
+      {/* 5. SINT INTEGRATION */}
+      <section className="py-20 px-4 bg-[#0A0A0A]">
+         <div className="max-w-7xl mx-auto glassmorphism p-8 md:p-12 rounded-3xl border border-white/10 bg-gradient-to-b from-[#111] to-[#0A0A0A]">
+            <div className="flex flex-col lg:flex-row gap-12 items-center">
+               <div className="flex-1 space-y-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-widest">
+                     Powered by SINT Trends
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-white font-display">A previsão mais precisa do mercado.</h2>
+                  <p className="text-gray-400 text-lg leading-relaxed">
+                     Não adivinhe. O FluxProduct cruza dados do SINT para mostrar exatamente quando um produto vai viralizar ou saturar.
+                  </p>
+                  <ul className="space-y-3">
+                     {["Probabilidade de Viralização (Score)", "Previsão de Demanda (7 dias)", "Keywords Explosivas", "Alerta de Saturação"].map(item => (
+                        <li key={item} className="flex items-center gap-3 text-gray-300 font-medium">
+                           <CheckCircle2 size={18} className="text-purple-500" /> {item}
+                        </li>
+                     ))}
+                  </ul>
+               </div>
+               <div className="flex-1 w-full h-[300px] bg-black/40 rounded-xl border border-white/10 p-4">
+                  <ResponsiveContainer width="100%" height="100%">
+                     <AreaChart data={trendData}>
+                        <defs>
+                           <linearGradient id="colorTrendFlux" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor="#A259FF" stopOpacity={0.3}/>
+                              <stop offset="95%" stopColor="#A259FF" stopOpacity={0}/>
+                           </linearGradient>
+                        </defs>
+                        <Tooltip contentStyle={{backgroundColor: '#111', border: '1px solid #333', borderRadius: '8px'}} />
+                        <Area type="monotone" dataKey="value" stroke="#A259FF" strokeWidth={3} fill="url(#colorTrendFlux)" />
+                     </AreaChart>
+                  </ResponsiveContainer>
+                  <div className="flex justify-between mt-2 px-2 text-xs text-gray-500 font-mono">
+                     <span>Hoje</span>
+                     <span>Previsão +7d</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
 
-                       <div className="space-y-4">
-                          <div className="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between items-center">
-                             <div>
-                                <p className="text-xs text-gray-400 uppercase font-bold">Competitividade</p>
-                                <p className="text-lg font-bold text-white">Baixa (Blue Ocean)</p>
-                             </div>
-                             <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
-                                <CheckCircle2 size={20}/>
-                             </div>
-                          </div>
-                          <div className="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between items-center">
-                             <div>
-                                <p className="text-xs text-gray-400 uppercase font-bold">Saturação</p>
-                                <p className="text-lg font-bold text-white">{selectedProduct.saturation}</p>
-                             </div>
-                             <div className="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400">
-                                <AlertCircle size={20}/>
-                             </div>
-                          </div>
-                          <div className="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between items-center">
-                             <div>
-                                <p className="text-xs text-gray-400 uppercase font-bold">Marketplace Score</p>
-                                <p className="text-lg font-bold text-white">9.2/10</p>
-                             </div>
-                             <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
-                                <Target size={20}/>
-                             </div>
-                          </div>
-                       </div>
-                    </div>
+      {/* 6. AI PAGE BUILDER */}
+      <section className="py-20 px-4">
+         <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-white mb-12 font-display">Page Builder IA <span className="text-gray-600 text-lg ml-2">(Landing Pages Automáticas)</span></h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+               <div className="md:col-span-2 glassmorphism p-8 rounded-2xl border border-white/10 bg-[#111] text-left">
+                  <h3 className="text-xl font-bold text-white mb-4">Geração Instantânea de LPs</h3>
+                  <div className="space-y-4">
+                     <div className="flex gap-3 items-center p-3 bg-white/5 rounded-lg border border-white/5">
+                        <Wand2 className="text-neon-blue" />
+                        <div>
+                           <p className="text-white font-bold text-sm">Copywriting Persuasivo</p>
+                           <p className="text-gray-500 text-xs">Headlines, Benefícios, Prova Social, FAQ.</p>
+                        </div>
+                     </div>
+                     <div className="flex gap-3 items-center p-3 bg-white/5 rounded-lg border border-white/5">
+                        <Smartphone className="text-pink-500" />
+                        <div>
+                           <p className="text-white font-bold text-sm">Mobile First Design</p>
+                           <p className="text-gray-500 text-xs">Layout premium otimizado para conversão no celular.</p>
+                        </div>
+                     </div>
+                     <div className="flex gap-3 items-center p-3 bg-white/5 rounded-lg border border-white/5">
+                        <Download className="text-green-400" />
+                        <div>
+                           <p className="text-white font-bold text-sm">Exportável</p>
+                           <p className="text-gray-500 text-xs">HTML, JSON ou publicação direta no Shopify.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div className="bg-black/40 border border-white/10 rounded-2xl flex items-center justify-center p-4 relative overflow-hidden">
+                  <div className="w-[180px] h-[320px] bg-white rounded-[20px] border-4 border-gray-800 relative shadow-2xl overflow-hidden flex flex-col">
+                     {/* Fake Mobile Preview */}
+                     <div className="h-32 bg-gray-200 w-full"></div>
+                     <div className="p-2 space-y-2">
+                        <div className="h-3 w-3/4 bg-gray-200 rounded"></div>
+                        <div className="h-2 w-full bg-gray-100 rounded"></div>
+                        <div className="h-2 w-full bg-gray-100 rounded"></div>
+                        <div className="h-8 w-full bg-black rounded mt-2"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
 
-                    {/* AI Insights */}
-                    <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                       <h3 className="text-sm font-bold text-blue-400 uppercase mb-2 flex items-center gap-2">
-                          <Zap size={16}/> IA Insight
-                       </h3>
-                       <p className="text-sm text-gray-300 leading-relaxed">
-                          Este produto está viralizando no TikTok com a hashtag #bedroomgoals. A demanda aumentou 45% na última semana.
-                          Recomendamos focar em vídeos curtos mostrando o efeito visual noturno.
-                          <br/><br/>
-                          <strong>Oportunidade:</strong> Venda como "presente para namorado(a)" ou "decoração gamer".
-                       </p>
-                    </div>
-                 </div>
-              )}
+      {/* 8. FAQ */}
+      <section className="py-20 px-4 max-w-3xl mx-auto">
+         <h2 className="text-3xl font-bold text-white text-center mb-10 font-display">Perguntas Frequentes</h2>
+         <div className="space-y-4">
+            {[
+               { q: "É permitido clonar produtos?", a: "O FluxProduct extrai dados públicos e reescreve descrições usando IA para garantir originalidade e evitar plágio direto, mantendo sua operação segura." },
+               { q: "Funciona para Shopee e TikTok Shop?", a: "Sim! Nossa engine suporta as principais plataformas de e-commerce e marketplaces globais." },
+               { q: "Consome muita API ou créditos?", a: "A extração básica é ilimitada. Recursos avançados de IA (geração de vídeo/imagem) consomem seus tokens do plano Pro/Agency." },
+               { q: "Preciso ter loja própria?", a: "Não necessariamente. Você pode usar o FluxProduct para espionar concorrentes ou gerar criativos para afiliados." },
+            ].map((item, i) => (
+               <div key={i} className="glassmorphism rounded-xl border border-white/10 overflow-hidden">
+                  <button 
+                     onClick={() => setActiveFaq(activeFaq === i ? null : i)}
+                     className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                  >
+                     <span className="font-bold text-white">{item.q}</span>
+                     {activeFaq === i ? <ChevronUp className="text-neon-blue"/> : <ChevronDown className="text-gray-500"/>}
+                  </button>
+                  {activeFaq === i && (
+                     <div className="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-black/20">
+                        {item.a}
+                     </div>
+                  )}
+               </div>
+            ))}
+         </div>
+      </section>
 
-              {/* TAB 2: Sales Kit Generator */}
-              {activeTab === 'sales' && (
-                 <div className="space-y-6 animate-fade-in-up">
-                    <div className="flex justify-between items-center">
-                       <h3 className="text-white font-bold">Gerador de Copywriting (IA)</h3>
-                       <button className="text-xs text-yellow-400 flex items-center gap-1 hover:underline">
-                          <RefreshCw size={12}/> Regenerar
-                       </button>
-                    </div>
+      {/* 9. FOOTER (Simple for Module Page) */}
+      <footer className="text-center pt-20 border-t border-white/5">
+         <div className="flex items-center justify-center gap-2 mb-4">
+            <Shield size={16} className="text-gray-600"/>
+            <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">FluxTime Secure Module</span>
+         </div>
+         <p className="text-sm text-gray-600">FluxProduct Pulse &copy; 2025 FluxTime Ecosystem.</p>
+      </footer>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                       <div className="space-y-2">
-                          <label className="text-xs font-bold text-gray-400 uppercase">Hook (Gancho)</label>
-                          <div className="bg-black/40 border border-white/10 rounded-xl p-4 relative group">
-                             <p className="text-sm text-white pr-8">
-                                "Pare de olhar para um teto entediante! Transforme seu quarto em uma galáxia inteira em segundos... 🌌✨"
-                             </p>
-                             <button className="absolute top-2 right-2 p-1.5 text-gray-500 hover:text-white bg-white/5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Copy size={14}/>
-                             </button>
-                          </div>
-                       </div>
-
-                       <div className="space-y-2">
-                          <label className="text-xs font-bold text-gray-400 uppercase">Título do Produto (SEO)</label>
-                          <div className="bg-black/40 border border-white/10 rounded-xl p-4 relative group">
-                             <p className="text-sm text-white pr-8">
-                                "Projetor Galáxia 360° - Luz Noturna Estrelada para Quarto Gamer & Decoração (Controle Remoto)"
-                             </p>
-                             <button className="absolute top-2 right-2 p-1.5 text-gray-500 hover:text-white bg-white/5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Copy size={14}/>
-                             </button>
-                          </div>
-                       </div>
-                    </div>
-
-                    <div className="space-y-2">
-                       <label className="text-xs font-bold text-gray-400 uppercase">Descrição de Venda (Persuasiva)</label>
-                       <div className="bg-black/40 border border-white/10 rounded-xl p-4 relative group">
-                          <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-line pr-8">
-                             Você já imaginou dormir sob as estrelas todas as noites? 🌠
-                             <br/><br/>
-                             Conheça o <strong>Galaxy Projector 2.0</strong>, a maneira mais fácil de mudar a vibe do seu ambiente.
-                             <br/>
-                             ✅ <strong>Efeito Imersivo:</strong> 10 modos de cores nebula.<br/>
-                             ✅ <strong>Relaxamento Total:</strong> Perfeito para dormir, meditar ou assistir filmes.<br/>
-                             ✅ <strong>Controle Total:</strong> Ajuste brilho e velocidade pelo controle.<br/>
-                             <br/>
-                             🔥 <em>Oferta por tempo limitado: 50% OFF + Frete Grátis!</em>
-                          </p>
-                          <button className="absolute top-2 right-2 p-1.5 text-gray-500 hover:text-white bg-white/5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-                             <Copy size={14}/>
-                          </button>
-                       </div>
-                    </div>
-
-                    <div className="space-y-2">
-                       <label className="text-xs font-bold text-gray-400 uppercase">Script para Vídeo (TikTok/Reels)</label>
-                       <div className="bg-black/40 border border-white/10 rounded-xl p-4 relative group">
-                          <p className="text-sm text-gray-300 leading-relaxed font-mono text-xs pr-8">
-                             [Cena 1: Quarto escuro, teto normal]<br/>
-                             Texto na tela: "Meu quarto antes..."<br/>
-                             (0:00-0:02)<br/><br/>
-                             [Cena 2: Acende o projetor, explosão de cores]<br/>
-                             Texto na tela: "Meu quarto AGORA! 😱"<br/>
-                             (0:02-0:05)<br/><br/>
-                             [Cena 3: Close no produto + pessoa relaxando]<br/>
-                             Narração: "Esse projetor cria uma vibe incrível para filmes ou games."<br/>
-                             (0:05-0:10)<br/><br/>
-                             [Cena 4: CTA]<br/>
-                             Texto: "Link na Bio - 50% OFF"<br/>
-                             (0:10-0:12)
-                          </p>
-                          <button className="absolute top-2 right-2 p-1.5 text-gray-500 hover:text-white bg-white/5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-                             <Copy size={14}/>
-                          </button>
-                       </div>
-                    </div>
-                 </div>
-              )}
-
-              {/* TAB 3: Content Strategy */}
-              {activeTab === 'content' && (
-                 <div className="space-y-6 animate-fade-in-up">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                       <div className="space-y-4">
-                          <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                             <h3 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                                <Tag size={16} className="text-yellow-400"/> Hashtags Otimizadas
-                             </h3>
-                             <div className="flex flex-wrap gap-2">
-                                {['#galaxyprojector', '#roomdecor', '#gamerroom', '#tiktokmademebuyit', '#vibes', '#astronomy', '#giftideas'].map(tag => (
-                                   <span key={tag} className="px-2 py-1 bg-black/40 border border-white/10 rounded text-xs text-blue-300">
-                                      {tag}
-                                   </span>
-                                ))}
-                                <button className="px-2 py-1 bg-yellow-400/10 border border-yellow-400/30 rounded text-xs text-yellow-400 hover:bg-yellow-400/20">
-                                   + Copiar Todas
-                                </button>
-                             </div>
-                          </div>
-
-                          <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                             <h3 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                                <Target size={16} className="text-red-400"/> Chamadas para Ação (CTA)
-                             </h3>
-                             <ul className="space-y-2 text-sm text-gray-400 list-disc list-inside">
-                                <li>"Clique em Saiba Mais para transformar seu quarto!"</li>
-                                <li>"Marque alguém que precisa disso 👇"</li>
-                                <li>"Estoque acabando! Garanta o seu no link da bio."</li>
-                             </ul>
-                          </div>
-                       </div>
-
-                       <div className="p-4 bg-white/5 rounded-xl border border-white/10 h-full">
-                          <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                             <Smartphone size={16} className="text-purple-400"/> Sugestões de Conteúdo
-                          </h3>
-                          <div className="space-y-4">
-                             <div className="flex items-start gap-3 p-3 bg-black/20 rounded-lg">
-                                <div className="p-2 bg-pink-500/10 text-pink-500 rounded-lg"><Video size={16}/></div>
-                                <div>
-                                   <p className="text-sm font-bold text-white">Unboxing ASMR</p>
-                                   <p className="text-xs text-gray-500">Sem fala, apenas sons da embalagem e do clique ao ligar.</p>
-                                </div>
-                             </div>
-                             <div className="flex items-start gap-3 p-3 bg-black/20 rounded-lg">
-                                <div className="p-2 bg-blue-500/10 text-blue-500 rounded-lg"><Video size={16}/></div>
-                                <div>
-                                   <p className="text-sm font-bold text-white">Reaction Video</p>
-                                   <p className="text-xs text-gray-500">Filme a reação de alguém entrando no quarto iluminado.</p>
-                                </div>
-                             </div>
-                             <div className="flex items-start gap-3 p-3 bg-black/20 rounded-lg">
-                                <div className="p-2 bg-green-500/10 text-green-500 rounded-lg"><Video size={16}/></div>
-                                <div>
-                                   <p className="text-sm font-bold text-white">Setup Gamer Tour</p>
-                                   <p className="text-xs text-gray-500">Mostre como o produto melhora o setup de jogos.</p>
-                                </div>
-                             </div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              )}
-
-           </div>
-        </div>
-
-      </div>
     </div>
   );
 };
 
-export default EcommerceBoost;
+const FeatureCard = ({ icon: Icon, color, title, items }: any) => (
+   <div className="glassmorphism p-6 rounded-2xl border border-white/10 bg-[#111] hover:bg-white/5 transition-colors group">
+      <div className={`w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-4 ${color} group-hover:scale-110 transition-transform`}>
+         <Icon size={20} />
+      </div>
+      <h3 className="text-lg font-bold text-white mb-4">{title}</h3>
+      <ul className="space-y-2">
+         {items.map((item: string) => (
+            <li key={item} className="text-sm text-gray-400 flex items-center gap-2">
+               <div className="w-1 h-1 rounded-full bg-white/20"></div> {item}
+            </li>
+         ))}
+      </ul>
+   </div>
+);
+
+export default FluxProduct;
