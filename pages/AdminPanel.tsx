@@ -22,7 +22,7 @@ const AdminPanel = () => {
              <div className="w-8 h-8 rounded bg-red-500/20 flex items-center justify-center text-red-400">
                 <Shield size={18} />
              </div>
-             <span className="text-xs font-bold text-red-400 tracking-widest uppercase">System Administration</span>
+             <span className="text-xs font-bold text-red-400 tracking-widest uppercase">FluxControl</span>
           </div>
           <h1 className="text-4xl font-black text-white tracking-tight">Painel Admin</h1>
           <p className="text-gray-400 mt-2">Gestão global de usuários, receita e sistema.</p>

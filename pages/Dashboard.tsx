@@ -1,142 +1,142 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  LayoutGrid, Share2, Search, Video, Bot, ShoppingCart, 
-  Activity, Zap, Clock, ArrowRight, CheckCircle2, AlertCircle 
+  Radar, Video, Bot, Zap, ArrowRight, Activity, 
+  Sparkles, Layers, TrendingUp, Cpu, LayoutGrid, CheckCircle2,
+  Flame, ShoppingBag, Search, ShieldAlert
 } from 'lucide-react';
 
 const Dashboard = () => {
-  const tools = [
-    { title: "News Analyzer Pro", desc: "Analyze news & intelligence.", icon: LayoutGrid, path: "/news-analyzer", color: "text-primary", bg: "bg-primary/10", border: "border-primary/20" },
-    { title: "FlowNews AI", desc: "Automated news pipelines.", icon: Share2, path: "/flownews", color: "text-blue-400", bg: "bg-blue-400/10", border: "border-blue-400/20" },
-    { title: "OSINT Tools", desc: "Deep web scraping & data.", icon: Search, path: "/osint", color: "text-purple-400", bg: "bg-purple-400/10", border: "border-purple-400/20" },
-    { title: "Creator Studio", desc: "AI video & text creation.", icon: Video, path: "/creator-studio", color: "text-pink-400", bg: "bg-pink-400/10", border: "border-pink-400/20" },
-    { title: "Automations IA", desc: "n8n workflow manager.", icon: Bot, path: "/automations", color: "text-emerald-400", bg: "bg-emerald-400/10", border: "border-emerald-400/20" },
-    { title: "Ecommerce Boost", desc: "Sales & competitor insights.", icon: ShoppingCart, path: "/ecommerce", color: "text-yellow-400", bg: "bg-yellow-400/10", border: "border-yellow-400/20" }
-  ];
-
-  const recentActivity = [
-    { module: 'OSINT', action: 'Coleta finalizada: @tech_guru', time: '2 min ago', status: 'success' },
-    { module: 'Creator', action: 'Vídeo gerado: "AI Trends 2024"', time: '15 min ago', status: 'success' },
-    { module: 'FlowNews', action: 'Feed processado: TechCrunch', time: '1h ago', status: 'success' },
-    { module: 'Automations', action: 'Erro no fluxo: Email Sequence', time: '3h ago', status: 'error' },
-  ];
-
   return (
-    <div className="max-w-7xl mx-auto space-y-8 pb-10">
-      {/* Hero Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-white/10 pb-6">
+    <div className="max-w-7xl mx-auto space-y-10 pb-10 animate-fade-in-up">
+      
+      {/* 1. HERO: FluxBoard Overview */}
+      <div className="flex flex-col md:flex-row justify-between items-end border-b border-white/5 pb-6">
         <div>
-          <h1 className="text-4xl font-black text-white tracking-tight mb-2">Central de Comando</h1>
-          <p className="text-gray-400">Visão unificada do seu ecossistema digital.</p>
+          <h1 className="text-4xl font-black text-white tracking-tight font-display mb-2">
+            FluxBoard <span className="text-neon-blue">OS</span>
+          </h1>
+          <p className="text-gray-400">Hub Central de Inteligência e Controle.</p>
         </div>
         <div className="flex gap-4">
-           <div className="px-4 py-2 rounded-lg bg-black/20 border border-white/10 flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-              <span className="text-sm font-bold text-gray-300">Sistema Online</span>
-           </div>
-           <div className="px-4 py-2 rounded-lg bg-black/20 border border-white/10 flex items-center gap-2">
-              <Zap size={16} className="text-yellow-400" />
-              <span className="text-sm font-bold text-gray-300">850 Créditos IA</span>
+           {/* Health Score Widget */}
+           <div className="px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center gap-3">
+              <Activity size={20} className="text-green-400" />
+              <div>
+                 <p className="text-[10px] font-bold text-gray-400 uppercase leading-none">Health Score</p>
+                 <p className="text-lg font-black text-white leading-none">98%</p>
+              </div>
            </div>
         </div>
       </div>
 
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        {[
-          { label: 'Conteúdos Gerados', val: '1,240', icon: Video, color: 'text-pink-400' },
-          { label: 'Dados Coletados', val: '85GB', icon: Search, color: 'text-purple-400' },
-          { label: 'Automações Executadas', val: '15k', icon: Zap, color: 'text-emerald-400' },
-          { label: 'Receita Estimada', val: '$12k', icon: Activity, color: 'text-primary' },
-        ].map((stat, i) => (
-          <div key={i} className="glassmorphism p-4 rounded-xl flex items-center gap-4">
-             <div className={`p-3 rounded-lg bg-white/5 ${stat.color}`}>
-               <stat.icon size={20} />
-             </div>
-             <div>
-               <p className="text-xs text-gray-400 font-bold uppercase">{stat.label}</p>
-               <p className="text-xl font-black text-white">{stat.val}</p>
-             </div>
-          </div>
-        ))}
+      {/* 2. System Status & Quick Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+         <div className="glassmorphism p-4 rounded-xl border border-white/10 flex items-center gap-4">
+            <div className="p-3 bg-neon-blue/10 rounded-lg text-neon-blue">
+               <Flame size={20}/>
+            </div>
+            <div>
+               <p className="text-xs font-bold text-gray-500 uppercase">FluxTrend</p>
+               <p className="text-white font-bold">3 Virais Detectados</p>
+            </div>
+         </div>
+         <div className="glassmorphism p-4 rounded-xl border border-white/10 flex items-center gap-4">
+            <div className="p-3 bg-emerald-500/10 rounded-lg text-emerald-500">
+               <Bot size={20}/>
+            </div>
+            <div>
+               <p className="text-xs font-bold text-gray-500 uppercase">FluxAuto</p>
+               <p className="text-white font-bold">5 Automações Ativas</p>
+            </div>
+         </div>
+         <div className="glassmorphism p-4 rounded-xl border border-white/10 flex items-center gap-4">
+            <div className="p-3 bg-yellow-500/10 rounded-lg text-yellow-500">
+               <ShoppingBag size={20}/>
+            </div>
+            <div>
+               <p className="text-xs font-bold text-gray-500 uppercase">FluxProduct</p>
+               <p className="text-white font-bold">12 Produtos Quentes</p>
+            </div>
+         </div>
+         <div className="glassmorphism p-4 rounded-xl border border-white/10 flex items-center gap-4">
+            <div className="p-3 bg-purple-500/10 rounded-lg text-purple-500">
+               <Search size={20}/>
+            </div>
+            <div>
+               <p className="text-xs font-bold text-gray-500 uppercase">FluxIntel</p>
+               <p className="text-white font-bold">4 Concorrentes</p>
+            </div>
+         </div>
       </div>
 
+      {/* 3. CORE: Intelligent Modules */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        {/* Main Modules Grid */}
-        <div className="lg:col-span-2 space-y-6">
-          <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <LayoutGrid size={20} className="text-primary" /> Módulos Integrados
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {tools.map((tool) => (
-              <Link 
-                key={tool.title} 
-                to={tool.path}
-                className={`group relative p-6 rounded-xl border ${tool.border} ${tool.bg} hover:bg-opacity-20 transition-all duration-300 overflow-hidden`}
-              >
-                <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                   <ArrowRight className="text-white" />
-                </div>
-                <div className="flex flex-col gap-4">
-                  <div className={`w-12 h-12 rounded-lg bg-black/20 flex items-center justify-center ${tool.color} shadow-lg`}>
-                    <tool.icon size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">{tool.title}</h3>
-                    <p className="text-sm text-gray-400">{tool.desc}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
+         
+         {/* FluxTrend Highlight */}
+         <Link to="/sint" className="col-span-1 lg:col-span-2 group relative p-8 rounded-2xl border border-neon-blue/30 bg-gradient-to-br from-neon-blue/5 to-transparent hover:bg-neon-blue/10 transition-all duration-300">
+            <div className="absolute top-4 right-4 p-2 bg-neon-blue/20 rounded-full text-neon-blue group-hover:scale-110 transition-transform">
+               <Radar size={24} />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">FluxTrend Radar</h3>
+            <p className="text-gray-400 max-w-md mb-6">
+               Oportunidade Viral: <span className="text-white font-bold">#AIRevolution</span> com crescimento de <span className="text-green-400">+450%</span> nas últimas 24h.
+            </p>
+            <div className="flex items-center gap-2 text-sm font-bold text-neon-blue group-hover:translate-x-2 transition-transform">
+               Explorar Tendências <ArrowRight size={16} />
+            </div>
+         </Link>
 
-        {/* Activity Feed */}
-        <div className="space-y-6">
-           <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <Clock size={20} className="text-primary" /> Atividade Recente
-          </h2>
-          <div className="glassmorphism rounded-xl p-4 space-y-4">
-             {recentActivity.map((item, i) => (
-               <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
-                  <div className={`mt-1 w-2 h-2 rounded-full shrink-0 ${item.status === 'success' ? 'bg-primary' : 'bg-red-500'}`} />
-                  <div className="flex-1 min-w-0">
-                     <p className="text-sm font-medium text-white truncate">{item.action}</p>
-                     <div className="flex justify-between items-center mt-1">
-                        <span className="text-xs text-gray-500 font-bold uppercase">{item.module}</span>
-                        <span className="text-xs text-gray-600">{item.time}</span>
-                     </div>
-                  </div>
+         {/* FluxPulse Highlight */}
+         <Link to="/news-analyzer" className="p-8 rounded-2xl border border-white/10 bg-[#111] hover:border-white/20 transition-all group flex flex-col justify-between">
+            <div>
+               <div className="flex justify-between items-start mb-4">
+                  <TrendingUp size={24} className="text-purple-400" />
+                  <span className="text-xs bg-purple-500/10 text-purple-400 px-2 py-1 rounded">FluxPulse</span>
                </div>
-             ))}
-             <button className="w-full py-2 text-xs font-bold text-gray-400 hover:text-white uppercase tracking-wide">
-               Ver Log Completo
-             </button>
-          </div>
-
-          {/* System Health */}
-          <div className="glassmorphism rounded-xl p-6 border border-white/10 space-y-4">
-             <h3 className="font-bold text-white text-sm uppercase tracking-wide">Status da API</h3>
-             <div className="space-y-3">
-                <div className="flex justify-between items-center text-sm">
-                   <span className="text-gray-400">Instagram Scraper</span>
-                   <span className="text-primary flex items-center gap-1"><CheckCircle2 size={12}/> Online</span>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                   <span className="text-gray-400">OpenAI Engine</span>
-                   <span className="text-primary flex items-center gap-1"><CheckCircle2 size={12}/> Online</span>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                   <span className="text-gray-400">Youtube API</span>
-                   <span className="text-yellow-400 flex items-center gap-1"><AlertCircle size={12}/> Latency</span>
-                </div>
-             </div>
-          </div>
-        </div>
-
+               <h3 className="text-xl font-bold text-white mb-2">Mercado Global</h3>
+               <p className="text-gray-400 text-sm">Volume de busca aumentando em Tech & Crypto.</p>
+            </div>
+            <div className="mt-4 w-full bg-white/5 h-1 rounded-full overflow-hidden">
+               <div className="w-3/4 h-full bg-purple-500"></div>
+            </div>
+         </Link>
       </div>
+
+      {/* 4. ACTIONS: Create & Automate */}
+      <section className="space-y-4">
+         <div className="flex items-center gap-2 mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-neon-purple shadow-neon-purple"></span>
+            <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest">Estúdio de Criação</h2>
+         </div>
+
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link to="/creator-studio" className="p-6 rounded-2xl border border-white/10 bg-[#111] hover:border-neon-purple/50 hover:bg-neon-purple/5 transition-all group">
+               <div className="mb-4 p-3 bg-white/5 rounded-xl w-fit group-hover:bg-neon-purple/20 group-hover:text-neon-purple transition-colors">
+                  <Sparkles size={24} />
+               </div>
+               <h3 className="text-lg font-bold text-white">FluxCreator</h3>
+               <p className="text-sm text-gray-400 mt-1">Crie posts e stories com IA.</p>
+            </Link>
+
+            <Link to="/reactor" className="p-6 rounded-2xl border border-white/10 bg-[#111] hover:border-pink-500/50 hover:bg-pink-500/5 transition-all group">
+               <div className="mb-4 p-3 bg-white/5 rounded-xl w-fit group-hover:bg-pink-500/20 group-hover:text-pink-500 transition-colors">
+                  <Video size={24} />
+               </div>
+               <h3 className="text-lg font-bold text-white">FluxVideoSpark</h3>
+               <p className="text-sm text-gray-400 mt-1">Gere vídeos curtos automáticos.</p>
+            </Link>
+
+            <Link to="/flownews" className="p-6 rounded-2xl border border-white/10 bg-[#111] hover:border-blue-500/50 hover:bg-blue-500/5 transition-all group">
+               <div className="mb-4 p-3 bg-white/5 rounded-xl w-fit group-hover:bg-blue-500/20 group-hover:text-blue-500 transition-colors">
+                  <Layers size={24} />
+               </div>
+               <h3 className="text-lg font-bold text-white">FluxNewsFlow</h3>
+               <p className="text-sm text-gray-400 mt-1">Pipeline de notícias automático.</p>
+            </Link>
+         </div>
+      </section>
+
     </div>
   );
 };

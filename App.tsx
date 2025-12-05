@@ -6,10 +6,12 @@ import NewsAnalyzer from './pages/NewsAnalyzer';
 import FlowNews from './pages/FlowNews';
 import OsintTools from './pages/OsintTools';
 import CreatorStudio from './pages/CreatorStudio';
+import ReactorVideo from './pages/ReactorVideo';
 import Automations from './pages/Automations';
 import EcommerceBoost from './pages/EcommerceBoost';
 import Settings from './pages/Settings';
 import AdminPanel from './pages/AdminPanel';
+import SINT from './pages/SINT';
 import Layout from './components/Layout';
 
 const AppContent = () => {
@@ -24,10 +26,12 @@ const AppContent = () => {
     <Layout>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/sint" element={<SINT />} />
         <Route path="/news-analyzer" element={<NewsAnalyzer />} />
         <Route path="/flownews" element={<FlowNews />} />
         <Route path="/osint" element={<OsintTools />} />
         <Route path="/creator-studio" element={<CreatorStudio />} />
+        <Route path="/reactor" element={<ReactorVideo />} /> 
         <Route path="/automations" element={<Automations />} />
         <Route path="/ecommerce" element={<EcommerceBoost />} />
         <Route path="/settings" element={<Settings />} />

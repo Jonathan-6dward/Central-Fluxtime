@@ -11,9 +11,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@200..800&family=Roboto+Mono:wght@400;500&family=Spline+Sans:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@200..800&family=Roboto+Mono:wght@400;500&family=Spline+Sans:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     
-    <!-- Material Symbols for legacy support in design, though we prefer Lucide in React -->
+    <!-- Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
     <script>
@@ -22,20 +22,36 @@
         theme: {
           extend: {
             colors: {
-              primary: "#00ff9d",
-              "primary-hover": "#0df29a",
-              "background-light": "#f5f8f7",
+              // Definitive FluxTime Palette
+              primary: "#4CC9F0", // Neon Blue
+              secondary: "#A259FF", // Neon Purple
+              "flux-cyan": "#4CC9F0", // Mapped to primary
+              "flux-purple": "#A259FF", // Mapped to secondary
+              "background-light": "#F2F2F2",
               "background-dark": "#0A0A0A",
-              "background-card": "#111815",
-              "neon-pink": "#FF00FF",
-              "electric-blue": "#00FFFF",
+              "background-card": "#111111",
+              "neon-blue": "#4CC9F0",
+              "neon-purple": "#A259FF",
             },
             fontFamily: {
               sans: ["Inter", "sans-serif"],
-              display: ["Spline Sans", "sans-serif"],
+              display: ["Space Grotesk", "sans-serif"],
               mono: ["Roboto Mono", "monospace"],
               body: ["Manrope", "sans-serif"]
             },
+            boxShadow: {
+              'neon-blue': '0 0 10px rgba(76, 201, 240, 0.5), 0 0 20px rgba(76, 201, 240, 0.3)',
+              'neon-purple': '0 0 10px rgba(162, 89, 255, 0.5), 0 0 20px rgba(162, 89, 255, 0.3)',
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
           },
         },
       }
@@ -43,29 +59,42 @@
     <style>
       /* Global Scrollbar */
       ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #0f1715; 
+        background: #0A0A0A; 
       }
       ::-webkit-scrollbar-thumb {
-        background: #334b42; 
-        border-radius: 4px;
+        background: #333; 
+        border-radius: 3px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #00ff9d; 
+        background: #4CC9F0; 
       }
       
+      body {
+        background-color: #0A0A0A;
+        color: #F2F2F2;
+      }
+
+      /* Cyberminimalist Glass */
       .glassmorphism {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(0, 255, 157, 0.1);
+        background: rgba(20, 20, 20, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
       
-      .text-glow {
-        text-shadow: 0 0 5px #00ff9d, 0 0 10px rgba(0, 255, 157, 0.5);
+      .glassmorphism-cyan {
+        background: rgba(76, 201, 240, 0.05);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(76, 201, 240, 0.2);
+      }
+      
+      .animate-fade-in-up {
+        animation: fadeInUp 0.5s ease-out forwards;
       }
     </style>
   <script type="importmap">
@@ -81,7 +110,7 @@
 }
 </script>
 </head>
-  <body class="bg-background-dark text-white antialiased">
+  <body class="bg-background-dark text-white antialiased selection:bg-neon-blue selection:text-black">
     <div id="root"></div>
   </body>
 </html>

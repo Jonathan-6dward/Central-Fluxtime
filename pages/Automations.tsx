@@ -3,10 +3,10 @@ import { Search, Play, Pause, Edit, Bot, Zap, Plus, ArrowRight, Activity, Clock 
 
 const Automations = () => {
   const workflows = [
-    { title: "Secretária Automatizada", desc: "Gerencia agendamentos via WhatsApp/Email.", icon: Bot, status: "active", color: "text-primary", bg: "bg-primary/10", border: "border-primary/20" },
-    { title: "Monitoramento de News", desc: "FlowNews -> Resumo -> Telegram.", icon: Zap, status: "active", color: "text-blue-400", bg: "bg-blue-400/10", border: "border-blue-400/20" },
-    { title: "OSINT -> CRM", desc: "Salva leads coletados no banco de dados.", icon: Search, status: "paused", color: "text-yellow-400", bg: "bg-yellow-400/10", border: "border-yellow-400/20" },
-    { title: "Ecommerce Alert", desc: "Notifica queda de estoque.", icon: Activity, status: "error", color: "text-red-400", bg: "bg-red-400/10", border: "border-red-400/20" },
+    { title: "Secretária Automatizada", desc: "Gerencia agendamentos via WhatsApp/Email.", icon: Bot, status: "active", color: "text-emerald-400", bg: "bg-emerald-400/10", border: "border-emerald-400/20" },
+    { title: "Monitoramento de FluxPulse", desc: "FluxPulse -> Resumo -> Telegram.", icon: Zap, status: "active", color: "text-blue-400", bg: "bg-blue-400/10", border: "border-blue-400/20" },
+    { title: "FluxIntel -> CRM", desc: "Salva leads coletados no banco de dados.", icon: Search, status: "paused", color: "text-yellow-400", bg: "bg-yellow-400/10", border: "border-yellow-400/20" },
+    { title: "FluxProduct Alert", desc: "Notifica queda de estoque.", icon: Activity, status: "error", color: "text-red-400", bg: "bg-red-400/10", border: "border-red-400/20" },
   ];
 
   return (
@@ -18,9 +18,9 @@ const Automations = () => {
              <div className="w-8 h-8 rounded bg-emerald-400/20 flex items-center justify-center text-emerald-400">
                 <Bot size={18} />
              </div>
-             <span className="text-xs font-bold text-emerald-400 tracking-widest uppercase">Workflow Engine (n8n)</span>
+             <span className="text-xs font-bold text-emerald-400 tracking-widest uppercase">FluxAuto</span>
           </div>
-          <h1 className="text-4xl font-black text-white tracking-tight">Automations IA</h1>
+          <h1 className="text-4xl font-black text-white tracking-tight">Workflow Engine (n8n)</h1>
           <p className="text-gray-400 mt-2">Gerencie fluxos inteligentes integrados ao ecossistema.</p>
         </div>
         <button className="px-6 py-2.5 bg-emerald-500 text-black font-bold rounded-xl hover:bg-emerald-400 transition-colors flex items-center gap-2">

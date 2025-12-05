@@ -11,7 +11,7 @@ const Settings = () => {
              <div className="w-8 h-8 rounded bg-gray-500/20 flex items-center justify-center text-gray-400">
                 <SettingsIcon size={18} />
              </div>
-             <span className="text-xs font-bold text-gray-400 tracking-widest uppercase">System Config</span>
+             <span className="text-xs font-bold text-gray-400 tracking-widest uppercase">FluxSettings</span>
           </div>
           <h1 className="text-4xl font-black text-white tracking-tight">Configurações</h1>
           <p className="text-gray-400 mt-2">Gerencie seu perfil e preferências do ecossistema.</p>
