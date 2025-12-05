@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FLUXTIME Ecosystem</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@200..800&family=Roboto+Mono:wght@400;500&family=Spline+Sans:wght@300..700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols for legacy support in design, though we prefer Lucide in React -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00ff9d",
+              "primary-hover": "#0df29a",
+              "background-light": "#f5f8f7",
+              "background-dark": "#0A0A0A",
+              "background-card": "#111815",
+              "neon-pink": "#FF00FF",
+              "electric-blue": "#00FFFF",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Spline Sans", "sans-serif"],
+              mono: ["Roboto Mono", "monospace"],
+              body: ["Manrope", "sans-serif"]
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Global Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f1715; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334b42; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00ff9d; 
+      }
+      
+      .glassmorphism {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 255, 157, 0.1);
+      }
+      
+      .text-glow {
+        text-shadow: 0 0 5px #00ff9d, 0 0 10px rgba(0, 255, 157, 0.5);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.10.1",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1"
+  }
+}
+</script>
+</head>
+  <body class="bg-background-dark text-white antialiased">
+    <div id="root"></div>
+  </body>
+</html>
